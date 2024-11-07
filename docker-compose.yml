@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend/server  
+      dockerfile: Dockerfile
+    container_name: my_backend_container
+    ports:
+      - "5000:5000"  # Expose backend on port 3000
+    environment:
+      NODE_ENV: development
+    networks:
+      - my_network
+
+  frontend:
+    build:
+      context: ./frontend/client  # Path to the frontend Dockerfile
+      dockerfile: Dockerfile
+    container_name: my_frontend_container
+    ports:
+      - "3000:80"  # Expose frontend on port 8080
+    depends_on:
+      - backend  # Ensure the backend service is started before the frontend
+    environment:
+      REACT_APP_API_URL: http://my_backend_container:5000  # Set backend API URL
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
+

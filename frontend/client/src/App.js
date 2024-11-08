@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+// src/App.js
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    // Make a request to your backend
+    fetch('http://localhost:5000/api/message')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+      .catch(error => console.error('Error:', error));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <code>myfirst App!</code> Here we go
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello from the Frontend!</h1>
+      <p>Backend Message: {message}</p>
     </div>
   );
 }

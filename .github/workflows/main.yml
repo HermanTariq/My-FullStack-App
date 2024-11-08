@@ -28,6 +28,7 @@ jobs:
             echo "Git status before pull"
             sudo git pull origin main
             sudo docker-compose down       # Stop any existing Docker containers
+            echo "docker-compose build"
             sudo docker-compose build --no-cache
             sudo docker-compose up -d      # Start your Docker containers in detached mode
           EOF

@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     // Make a request to your backend
-    fetch('http://localhost:5000/api/message')
+    fetch('http://localhost:5000')
       .then(response => response.json())
       .then(data => setMessage(data.message))
       .catch(error => console.error('Error:', error));

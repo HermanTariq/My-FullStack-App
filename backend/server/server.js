@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.get('/api/message', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });
 

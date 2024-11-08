@@ -6,5 +6,5 @@ RUN npm install -g pm2
 RUN pm2 init
 COPY . .
 EXPOSE 5000
-CMD ["node", "server.js"]
+CMD ["npm", "start"]
 

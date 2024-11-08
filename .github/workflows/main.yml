@@ -24,7 +24,7 @@ jobs:
       - name: SSH into EC2 and Deploy
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
-            cd /path/to/your/project  # Navigate to your project directory
+            cd  /home/ubuntu/My-FullStack-App # Navigate to your project directory
             docker-compose down       # Stop any existing Docker containers
             docker-compose up -d      # Start your Docker containers in detached mode
           EOF

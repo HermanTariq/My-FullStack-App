@@ -6,7 +6,10 @@ const app = express();
 const PORT = 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: '*', // You can specify the exact origin if necessary (e.g., 'http://localhost:3000')
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes

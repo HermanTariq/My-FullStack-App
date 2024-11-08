@@ -27,11 +27,7 @@ jobs:
             cd  /home/ubuntu/My-FullStack-App # Navigate to your project director
             echo "Git status before pull"
             sudo git pull origin main
-            sudo docker-compose down       # Stop any existing Docker containers
-            echo "docker-compose build"
-            docker system prune -a --volumes -f
-            sudo docker-compose build --no-cache
-            docker-compose build --no-cache backend
-            docker-compose build --no-cache frontend
-            sudo docker-compose up -d      # Start your Docker containers in detached mode
+            docker-compose down       # Stop any existing Docker containers
+            docker-compose build --no-cache
+            docker-compose up -d      # Start your Docker containers in detached mode
           EOF

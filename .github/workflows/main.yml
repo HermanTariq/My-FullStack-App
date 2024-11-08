@@ -26,7 +26,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
             cd  /home/ubuntu/My-FullStack-App # Navigate to your project director
             sudo git pull origin main 
-            docker-compose down       # Stop any existing Docker containers
-            docker-compose build --no-cache
-            docker-compose up -d      # Start your Docker containers in detached mode
+            sudo docker-compose down       # Stop any existing Docker containers
+            sudo docker-compose build --no-cache
+            sudo docker-compose up -d      # Start your Docker containers in detached mode
           EOF

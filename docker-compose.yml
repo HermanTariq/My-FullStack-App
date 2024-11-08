@@ -5,7 +5,7 @@ services:
     build:
       context: ./backend/server  
       dockerfile: Dockerfile
-    container_name: my_backend_container
+    container_name: my-fullstack-app-backend
     ports:
       - "5000:5000"  # Expose backend on port 3000
     environment:
@@ -17,13 +17,13 @@ services:
     build:
       context: ./frontend/client  # Path to the frontend Dockerfile
       dockerfile: Dockerfile
-    container_name: my_frontend_container
+    container_name: my-fullstack-app-frontend
     ports:
       - "3000:80"  # Expose frontend on port 8080
     depends_on:
       - backend  # Ensure the backend service is started before the frontend
     environment:
-      REACT_APP_API_URL: http://my_backend_container:5000  # Set backend API URL
+      REACT_APP_API_URL: http://my-fullstack-app-backend:5000  # Set backend API URL
     networks:
       - my_network
 

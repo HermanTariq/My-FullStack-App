@@ -1,31 +1,30 @@
-name: Deploy and Restart Docker Compose on EC2
+name: Deploy to EC2 using SSH
 
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - main  # Trigger the workflow when code is pushed to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the latest code from the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Set up SSH using the webfactory/ssh-agent action
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
 
-      - name: SSH and Restart Docker Compose
+      # Step 3: SSH into the EC2 instance and execute your deployment commands
+      - name: SSH into EC2 and Deploy
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
-            cd /My-FullStack-App
-            docker-compose down
-            docker-compose up -d
-            docker ps
+            cd /path/to/your/project  # Navigate to your project directory
+            docker-compose down       # Stop any existing Docker containers
+            docker-compose up -d      # Start your Docker containers in detached mode
           EOF

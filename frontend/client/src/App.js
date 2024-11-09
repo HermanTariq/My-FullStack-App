@@ -5,7 +5,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const backendUrl = process.env.REACT_APP_API_URL || 'http://3.135.1.59:5000'; 
+    const backendUrl = process.env.REACT_APP_API_URL || 'http://3.23.95.138:5000'; 
     console.log('Backend URL:', backendUrl);  // Add this line to confirm the API URL
     fetch(`${backendUrl}/`)
       .then(response => response.json())
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello from the Frontend 9!</h1>
+      <h1>Hello from the Frontend 10!</h1>
       <p>Backend Message: {message}</p>
     </div>
   );

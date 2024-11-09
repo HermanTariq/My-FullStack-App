@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello from the Frontend 6!</h1>
+      <h1>Hello from the Frontend 7!</h1>
       <p>Backend Message: {message}</p>
     </div>
   );

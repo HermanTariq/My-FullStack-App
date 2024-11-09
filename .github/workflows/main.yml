@@ -28,6 +28,8 @@ jobs:
             echo "Git status before pull"
             sudo git pull origin main
             docker-compose down       # Stop any existing Docker containers
+            docker rmi my-fullstack-app-backend my-fullstack-app-frontend
+            echo "Deleteeeeeeeeeeee"
             docker-compose build --no-cache
             docker-compose up -d      # Start your Docker containers in detached mode
           EOF
